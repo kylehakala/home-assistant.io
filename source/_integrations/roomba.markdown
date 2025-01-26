@@ -125,9 +125,12 @@ To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` asso
         - `type` (this will be either `rid` for Rooms, or `zid` for Clean Zones)
 7. Enter the respective values in the parameters area (along the `start` command and chosen vacuum Entity) for the `vacuum.send_command` action.
     - This action can be used in any of the standard methods provided by Home Assistant, including Scripts, Automations, or testing using the Actions menu in the Developer tools pages.
+8. Disable debug logging for the Roomba integration.
+9. You may also cancel your cleaning job that was started to retrieve the values.
+
 
 {% note %}
-To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with all rooms/zones selected, and they will listed in the `lastComand` in the same order that they were "tapped" in the app. 
+To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with any (or all) rooms/zones selected, and they will listed in the `lastComand` in the same order that they were "tapped" in the app. You can then reference the names of the zones/rooms in the iRobot app to document their respective `region_id` for later use.
 {% endnote %}
 
 
