@@ -89,6 +89,7 @@ Use this credentials in dorita980 lib :)
 Copy the password (everything between `=>` and `<=`, not including leading and trailing whitespace) into the Home Assistant password dialog.
 
 ## Vacuuming a Specific Room or Zone
+
 It is possible to use existing (or create new) rooms or clean zones in the iRobot app and start a vacuum job in that area using Home Assistant.
 
 Using the `vacuum.send_command` action, you can run a `start` command with additional parameters that include iRobot-specific information about the associated map references (called the `pmap_id` and `user_pmapv_id`) and a list of areas (known as `regions`) in the order that they should be cleaned.
@@ -98,6 +99,7 @@ Automations may start to fail if your map is updated in the iRobot app. When the
 {% endwarning %}
 
 Example parameters:
+
 ```yaml
 pmap_id: XXXXXXXXXXXXXXXX--XXXX
 regions:
@@ -110,7 +112,8 @@ user_pmapv_id: YYMMDDTHHMMSS # Changes when a map is updated
 *When listing multiple `regions`, each region will be cleaned in the order in which it is listed.*
 
 ### Retrieving Parameters
-To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` associated with each of your rooms and zones, you can to intiate a job from the iRobot app and retrieve the information from Home Assistant logs.
+
+To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` associated with each of your rooms and zones, you can initiate a job from the iRobot app and retrieve the information from Home Assistant logs.
 
 1. Enable debug logging for the Roomba integration (you will disable this at the end).
 2. In the iRobot app, start a new job using your target regions (rooms or zones).
@@ -129,7 +132,7 @@ To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` asso
 9. You may also cancel your cleaning job that was started to retrieve the values.
 
 {% note %}
-To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with any (or all) rooms/zones selected, and they will listed in the `lastComand` in the same order that they were "tapped" in the app. You can then reference the names of the zones/rooms in the iRobot app to document their respective `region_id` for later use.
+To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with any (or all) rooms/zones selected, and they will listed in the `lastCommand` in the same order that they were "tapped" in the app. You can then reference the names of the zones/rooms in the iRobot app to document their respective `region_id` for later use.
 {% endnote %}
 
 Example of a log line for the `lastCommand` search:
