@@ -113,7 +113,7 @@ user_pmapv_id: YYMMDDTHHMMSS # Changes when a map is updated
 To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` associated with each of your rooms and zones, you can to intiate a job from the iRobot app and retrieve the information from Home Assistant logs.
 
 1. Enable debug logging for the Roomba integration (you will disable this at the end).
-2. In the iRobot app, start a new job using your target regions (i.e., rooms or zones).
+2. In the iRobot app, start a new job using your target regions (rooms or zones).
 3. Go to Home Assistant **Settings** > **System** > **Logs**.
 4. Select **Show raw logs** from the three-dots menu.
 5. In the search box on the Logs page, search for `lastCommand` and locate the most recent entry containing the "start" command.
@@ -123,7 +123,7 @@ To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` asso
     - Within the list of `regions`, record each of the values:
         - `region_id`
         - `type` (this will be either `rid` for Rooms, or `zid` for Clean Zones)
-7. Enter the respective values in the parameters area (along the `start` command and chosen vacuum Entity) for the `vacuum.send_command` action.
+7. Enter the respective values in the parameters area (along with the `start` command and chosen vacuum entity) for the `vacuum.send_command` action.
     - This action can be used in any of the standard methods provided by Home Assistant, including Scripts, Automations, or testing using the Actions menu in the Developer tools pages.
 8. Disable debug logging for the Roomba integration.
 9. You may also cancel your cleaning job that was started to retrieve the values.
@@ -136,6 +136,25 @@ Example of a log line for the `lastCommand` search:
 
 ```shell
 1970-01-01 00:00:00.000 DEBUG (Thread-1 (_thread_main)) [homeassistant.components.roomba.vacuum] Got new state from the vacuum: {'state': {'reported': {'lastCommand': {'command': 'start', 'time': 0000000000, 'initiator': 'rmtApp', 'pmap_id': 'XXXXXXXXXXXXXXXX--XXXX', 'regions': [{'params': {'noAutoPasses': True, 'twoPass': False}, 'region_id': 'X', 'type': 'zid'}], 'user_pmapv_id': 'YYMMDDTHHMMSS', 'favorite_id': None, 'ordered': 1, 'event': None}}}}
+```
+
+Example of script using `vacuum.send_command` with room-specifying parameters:
+
+```yaml
+alias: Vacuum Kitchen Rug
+sequence:
+  - target:
+      device_id: ROOMBA_DEVICE_ID_POPULATED_BY_HOMEASSISTANT
+    data:
+      command: start
+      params:
+        pmap_id: XXXXXXXXXXXXXXXX--XXXX
+        regions:
+          - region_id: "0"
+            type: zid
+        user_pmapv_id: YYMMDDTHHMMSS
+    action: vacuum.send_command
+mode: single
 ```
 
 ## Troubleshooting
