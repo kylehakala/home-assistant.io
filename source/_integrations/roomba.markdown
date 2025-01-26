@@ -88,6 +88,55 @@ Use this credentials in dorita980 lib :)
 
 Copy the password (everything between `=>` and `<=`, not including leading and trailing whitespace) into the Home Assistant password dialog.
 
+## Vacuuming a Specific Room or Zone
+It is possible to use existing (or create new) rooms or clean zones in the iRobot app and start a vacuum job in that area using Home Assistant.
+
+Using the `vacuum.send_command` action, you can run a `start` command with additional parameters that include iRobot-specific information about the associated map references (called the `pmap_id` and `user_pmapv_id`) and a list of areas (known as `regions`) in the order that they should be cleaned.
+
+{% warning %}
+Automations may start to fail if your map is updated in the iRobot app. When the map is updated, the `user_pmapv_id` currently gets "reset" to the timestamp of when the change was made. You may need to retrieve the value periodically depending on your usage of the iRobot app.
+{% endwarning %}
+
+Example parameters:
+```yaml
+pmap_id: XXXXXXXXXXXXXXXX--XXXX
+regions:
+  - region_id: "X"
+    type: zid # zid is a Zone ID
+  - region_id: "X"
+    type: rid # rid is a Room ID
+user_pmapv_id: YYMMDDTHHMMSS # Changes when a map is updated
+```
+*When listing multiple `regions`, each region will be cleaned in the order in which it is listed.*
+
+### Retrieving Parameters
+To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` associated with each of your rooms and zones, you can to intiate a job from the iRobot app and retrieve the information from Home Assistant logs.
+
+1. Enable debug logging for the Roomba integration (you will disable this at the end).
+2. In the iRobot app, start a new job using your target regions (i.e., rooms or zones).
+3. Go to Home Assistant Settings > System > Logs.
+4. Select **Show raw logs** from the three-dots menu; keep this view opened.
+5. In the search box on the Logs page, search for `lastCommand` and locate the most recent entry.
+6. Make note of the values for the following attributes: 
+    - `pmap_id`
+    - `user_pmapv_id`
+    - Within the list of `regions`, record each of the values:
+        - `region_id`
+        - `type` (this will be either `rid` for Rooms, or `zid` for Clean Zones)
+7. Enter the respective values in the parameters area (along the `start` command and chosen vacuum Entity) for the `vacuum.send_command` action.
+    - This action can be used in any of the standard methods provided by Home Assistant, including Scripts, Automations, or testing using the Actions menu in the Developer tools pages.
+
+{% note %}
+To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with all rooms/zones selected, and they will listed in the `lastComand` in the same order that they were "tapped" in the app. 
+{% endnote %}
+
+
+Example of a log line for the `lastCommand` search:
+
+```shell
+1970-01-01 00:00:00.000 DEBUG (Thread-1 (_thread_main)) [homeassistant.components.roomba.vacuum] Got new state from the vacuum: {'state': {'reported': {'lastCommand': {'command': 'start', 'time': 0000000000, 'initiator': 'rmtApp', 'pmap_id': 'XXXXXXXXXXXXXXXX--XXXX', 'regions': [{'params': {'noAutoPasses': True, 'twoPass': False}, 'region_id': 'X', 'type': 'zid'}], 'user_pmapv_id': 'YYMMDDTHHMMSS', 'favorite_id': None, 'ordered': 1, 'event': None}}}}
+```
+
 ## Troubleshooting
 
 - **Integration wizard shows "Failed to connect" after submitting the password**: Before attempting a factory reset (which can be a cumbersome process), attempt submitting the password in the integration wizard while the Roomba is actively running (i.e. cleaning). Avoid opening the app to start a manual job to help with this. Instead, push the physical clean button on the device directly to start the manual job. This appears to resolve the issue on some models because they answer queries only while actively running.
