@@ -69,25 +69,27 @@ This {% term integration %} currently supports the following device types within
 - [Switch](/integrations/switch/)
 - [Update](/integrations/update/)
 
-In addition, it has support for "Zigbee groups" that enable native on-device grouping of multiple Zigbee lights, switches, and fans that enable controlling all entities for those devices in those groups with one command. At least two entities must be added to a Zigbee group inside the ZHA {% term integration %} before a group entity is created. There is also support for native on-device Zigbee [binding and unbinding (i.e. bind a remote to a lightbulb or group)](#zigbee-binding-and-unbinding).
+The ZHA integration also supports native on-device Zigbee groups and Zigbee bindings. Refer to documentation sections below for [Zigbee groups](#zigbee-group) or [Zigbee binding and unbinding](#zigbee-binding-and-unbinding) for more information.
 
 ## Introduction
 
-This ZHA integration is a hardware-independent Zigbee gateway implementation that can replace most proprietary Zigbee gateways/bridges/hubs/controllers. Zigbee is a low-bandwidth communication protocol that relies on using small low-power digital radios to connect compatible devices to local Zigbee wireless private area networks. ZHA will create a single Zigbee network to which you can then pair/join most Zigbee-based devices that are made for home automation and lighting.
+This ZHA integration is a hardware-independent Zigbee gateway implementation that can replace most proprietary Zigbee gateways/bridges/hubs/controllers. Zigbee is a low-bandwidth communication protocol that relies on using small low-power digital radios to connect compatible devices to local Zigbee wireless private area networks. ZHA creates a single Zigbee network to which you can then pair/join most Zigbee-based devices that are made for home automation and lighting.
 
-Before installing the ZHA integration in Home Assistant, you need to connect a Zigbee Coordinator radio adapter that will connect to your Zigbee network. Those normally come in the form of a USB dongle that plugs directly into the same computer that is running your Home Assistant installation. The ZHA integration is compatible with many different "Zigbee Coordinator" adapters from various manufacturers. Be sure to [note the recommendations in the respective sections below before buying a Zigbee Coordinator](#compatible-hardware). A Zigbee network always needs to have one Zigbee Coordinator (it can never have more than one), and Zigbee devices can never be connected to more than a single Zigbee network, however, a Zigbee network can have multiple "Zigbee Router" devices and "Zigbee End Device" products.
+Before installing the ZHA integration, you need to connect a Zigbee Coordinator radio adapter that will connect to your Zigbee network. Those normally come in the form of a USB dongle that plugs directly into the same computer that is running your Home Assistant installation. The ZHA integration is compatible with many different Zigbee Coordinator adapters. Be sure to [note the recommendations in the respective sections below](#compatible-hardware) before buying a Zigbee Coordinator. A Zigbee network must have one Zigbee Coordinator (and never have more than one), and Zigbee devices can never be connected to more than a single Zigbee network. However, a Zigbee network can have multiple "Zigbee Router" devices and "Zigbee End Device" products.
 
-Once ZHA has been set up with a Zigbee Coordinator it will automatically create a Zigbee network and you will be able to join/pair any Zigbee Router devices and Zigbee End Devices. With only a few [limitations](#limitations), most devices will join/pair directly regardless of brand and manufacturer. Technically almost all devices that are compliant with the official Zigbee specifications should offer interoperability, though a newer Zigbee Coordinator with support for later firmware often offers better compatibility with both new and older devices. Still, be aware that [all functionality might not always be supported or exposed for every device out-of-the-box](#knowing-which-devices-are-supported) as some devices that use manufacturer-specific extensions to add non-standard functions and features could sometimes need [device-specific code to fully work with ZHA](#how-to-add-support-for-new-and-unsupported-devices).
+Once ZHA has been set up with a Zigbee Coordinator, it will automatically create a Zigbee network and you will be able to join/pair compatible Zigbee Router devices and Zigbee End Devices. With only a few [limitations](#limitations), most devices will join/pair directly, regardless of brand and manufacturer. Almost all devices that are compliant with the official Zigbee specifications should offer interoperability, though a newer Zigbee Coordinator with support for later firmware often provides better compatibility for both newer and older devices. Be aware that [not all functionality may be supported or exposed for every device out-of-the-box](#knowing-which-devices-are-supported). Some devices that use manufacturer-specific extensions to add non-standard functions and features may need [device-specific code to fully work with ZHA](#how-to-add-support-for-new-and-unsupported-devices).
 
-Note that because Zigbee relies on "mesh networking" technology it depends heavily on having [Zigbee Router devices](#using-router-devices-to-add-more-devices) to expand the network coverage and extend its size. These are always mains-powered devices that route messages to other devices that are located close to them within the Zigbee network mesh to improve the range and increase the total amount of devices you can add.  You should therefore make sure that you add many Zigbee Router devices and not just Zigbee End Devices or else its network mesh connection routes will be limited due to the short range and poor wall penetration of Zigbee radio signals. It is highly recommended that you read and follow all the general tips below about [Zigbee interference avoidance and network range/coverage optimization)](#zigbee-interference-avoidance-and-network-rangecoverage-optimization).
+Because Zigbee relies on mesh networking technology, it depends heavily on having [Zigbee Router devices](#using-router-devices-to-add-more-devices) to expand its network coverage and capacity. These devices are always mains-powered devices that route messages to other devices located close to them within the Zigbee network mesh to improve the range and increase the total amount of devices you can add. Be sure to add Zigbee Router devices to your network and not just Zigbee End Devices (or else connection routes will be limited due to short range and poor wall penetration of Zigbee radio signals). It is highly recommended that you review the guideance for [Zigbee interference avoidance and network range/coverage optimization)](#zigbee-interference-avoidance-and-network-rangecoverage-optimization).
 
 ## Compatible hardware
 
-ZHA {% term integration %} uses a hardware independent Zigbee stack implementation with modular design, which means that it can support any one of the many Zigbee coordinator radio modules/adapters available from different manufacturers, as long as that module/adapter is compatible with [zigpy](https://github.com/zigpy/zigpy).
+ZHA {% term integration %} uses a hardware-independent Zigbee stack implementation with modular design, which means that it can support any one of the many Zigbee coordinator radio modules/adapters available from different manufacturers, as long as that module/adapter is compatible with [zigpy](https://github.com/zigpy/zigpy).
 
-Note! Zigbee 3.0 support or not in zigpy, depends primarily on your Zigbee coordinator hardware and its firmware. Some Zigbee coordinator hardware supports Zigbee 3.0 but might be shipped with an older firmware which does not. In such a case you may want to upgrade the firmware manually yourself.
+{% note %}
+Zigbee 3.0 support or not in zigpy, depends primarily on your Zigbee coordinator hardware and its firmware. Some Zigbee coordinators support Zigbee 3.0 but might be shipped with an older firmware which does not. In such a case you may want to upgrade the firmware manually yourself.
+{% endnote %}
 
-Some other Zigbee coordinator hardware may not support a firmware that is capable of Zigbee 3.0 at all but can still be fully functional and feature-complete for your needs. This is very common as many, if not most, Zigbee devices do not yet Zigbee 3.0. As a general rule, newer Zigbee coordinator hardware generally supports Zigbee 3.0 firmware and it is up to its manufacturer to make such firmware available for them.
+Some Zigbee coordinator hardware may not support firmware capable of Zigbee 3.0 but can still be fully functional and feature-complete for your needs. Many (if not most) Zigbee devices do not yet support Zigbee 3.0. Generally, newer Zigbee coordinators support Zigbee 3.0 firmware and it is up to the manufacturer to make such firmware available to them.
 
 ### Known working Zigbee radio modules
 
@@ -144,11 +146,9 @@ A Zigbee Coordinator requires a stable local connection to its serial port inter
 
 ## Configuration - GUI
 
-Connect your radio module and restart Home Assistant.
+Be sure to connect your radio module and restart Home Assistant before proceeding.
 
-From the Home Assistant front page go to **Configuration** and then select **Integrations** from the list.
-
-Use the plus button in the bottom right to add a new {% term integration %} called **ZHA**.
+{% include integrations/config_flow.md %}
 
 In the popup:
 
@@ -226,17 +226,23 @@ Additional devices in the [Known working Zigbee radio modules](#known-working-zi
 
 The ZHA integration has the ability to perform OTA (over-the-air) firmware updates of Zigbee devices. This feature is enabled by default. As it uses standard [Update](/integrations/update/) entities in Home Assistant, users will get a UI notification if and when an OTA firmware update is available for a specific device, with an option to initiate the update or ignore that specific update for the device.
 
-To see OTA updates for a device, it's required that it both supports OTA updates and that firmware images for the device are publicly provided by the manufacturer. For this reason, ZHA currently only includes OTA providers for a few manufacturers that provide these updates publicly. This includes IKEA, Inovelli, Ledvacnce/OSRAM, SALUS/Computime, Sonoff/iTead, and Third Reality.
+To see OTA updates for a device, it must support OTA updates and firmware images for the device must be publicly provided by the manufacturer. ZHA currently only includes OTA providers for a few manufacturers that provide these updates publicly. 
+
+**Included manufacturers:**
+- IKEA
+- Inovelli
+- Ledvacnce/OSRAM
+- SALUS/Computime
+- Sonoff/iTead
+- Third Reality
 
 {% warning %}
-Before updating a device, you should search for any disadvantages or if you even need to install an available update. Some firmware updates can break features you might use (e.g. group binding for IKEA devices). Some updates might also require changes to ZHA. In rare cases, you can even brick devices by installing a firmware update.
+Before updating a device, you should search for any disadvantages or if you even need to install an available update. Some firmware updates can break features you might use (such as group binding for IKEA devices). Some updates might also require changes to ZHA. In rare cases, you can even brick devices by installing a firmware update.
 {% endwarning %}
 
 ### Global Options
 
-There are a few global options available once ZHA has been configured. Press **Configure** to access these settings.
-
-The options are as follows:
+Several global options are available once ZHA has been configured. To modify them, press **Configure** to access the following options:
 
 {% configuration_basic %}
 Enable enhanced light color/temperature transition from an off-state:
@@ -275,7 +281,7 @@ Refer to the [zigpy documentation for OTA configuration](https://github.com/zigp
 
 ### Defining Zigbee channel to use
 
-Tip! Before considering to change to an other Zigbee channel on an existing Zigbee network, it is highly recommended that you read through the two segments under the [troubleshooting](#troubleshooting) section below about "*Best practices to avoid pairing/connection difficulties*" and "*Zigbee interference avoidance and network range/coverage optimization*". These sections provide prerequisite information and advice on how to achieve the best possible Zigbee network in your environment.
+Tip! Before considering to change the Zigbee channel on an existing Zigbee network, it is highly recommended that you read through the two segments under the [troubleshooting](#troubleshooting) section below about "*Best practices to avoid pairing/connection difficulties*" and "*Zigbee interference avoidance and network range/coverage optimization*". These sections provide prerequisite information and advice on how to achieve the best possible Zigbee network in your environment.
 
 ZHA prefers to use Zigbee channel 15 by default. You can change this using YAML configuration, but this only works
 if there's no existing network. To change the channel for an existing network, radio has to be factory reset and a new network to be formed. This requires re-pairing of all the devices.
@@ -422,6 +428,8 @@ ZHA supports Zigbee groups and binding devices to each other. These features can
 ### Zigbee group
 
 A Zigbee group enables the grouping of multiple Zigbee lights, switches, and fans. This allows you to control those devices with only one command/entity.
+
+At least two entities must be added to a Zigbee group inside the ZHA {% term integration %} before a group entity is created.
 
 {% note %}
 While using a native Zigbee group instead of Home Assistant's [Group](/integrations/group/) integration can improve the visual responsiveness, the broadcast commands issued can flood the Zigbee network if issued repeatedly.
