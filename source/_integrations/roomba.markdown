@@ -132,7 +132,7 @@ To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` asso
 9. You may also cancel your cleaning job that was started to retrieve the values.
 
 {% note %}
-To retrieve many room or zone `region_id` values at a time, you can create your manual job in the iRobot app with any (or all) rooms/zones selected, and they will listed in the `lastCommand` in the same order that they were "tapped" in the app. You can then reference the names of the zones/rooms in the iRobot app to document their respective `region_id` for later use.
+To retrieve many room or zone `region_id` values at a time, you can create a single manual job in the iRobot app with any (or all) rooms/zones selected, and the respective `region_id` values will be listed in the `lastCommand` output in the same order that they were selected ("tapped") in the iRobot app. You can then reference the names of the zones/rooms in the iRobot app to create a list of the friendly names along with the respective `region_id` for later use.
 {% endnote %}
 
 Example of a log line for the `lastCommand` search:
