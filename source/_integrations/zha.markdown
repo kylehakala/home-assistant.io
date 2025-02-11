@@ -366,12 +366,12 @@ from the same group:
 | `qr_code`      | qr_code         | QR code containing IEEE and Install Code of the joining ZB3 device  |
 
 {% note %}
-  Currently `qr_code` supports QR Install Codes from:
+Currently `qr_code` supports QR Install Codes from:
 
-  - Aqara
-  - Bosch
-  - Consciot
-  - Embrighten
+- Aqara
+- Bosch
+- Consciot
+- Embrighten
 {% endnote %}
 
 ### Action `zha.remove`
@@ -553,7 +553,7 @@ Please note the current limitations and follow the instructions in this troubles
 
 {% note %}
 To help resolve any kinks or compatibility problems, report bugs as issues with debug logs.
-{% note %}
+{% endnote %}
 
 ### Limitations
 
@@ -681,6 +681,7 @@ Missing links between Zigbee end devices (often battery-powered devices) in the 
 Some end devices (for example, Xiaomi door sensors) sleep for an extended period, causing the parent Zigbee Router to remove them from its child table via a feature called router child aging. Since using child aging and removing them from the child table is a Zigbee 3.0 feature, this does not always occur because not all Zigbee router devices use child aging.
 
 This is what causes devices to show a missing link. Even though the device is no longer in the child table, the end device can still communicate via the parent Zigbee router.
+
 #### How to interpret RSSI and LQI values
 
 Interpreting RSSI and LQI values can be complex, as metrics of network health and communication quality are provided by the devices themselves, and each device could get to its results in different ways. Unless you are a Zigbee specialist yourself or are guided by one, please ignore those values. They can be misleading. If you delve into this, it is important to understand not to judge RSSI or LQI values on their own. When troubleshooting Zigbee messages that are being dropped, you must interpret the combination of both RSSI and LQI.
