@@ -473,14 +473,14 @@ While using a native Zigbee group instead of Home Assistant's [Group](/integrati
 
 #### Creating a Zigbee Group
 
-{% note %}
-The group should consist of products of the same device type (all lights, all switches, or all fans), and at least two devices must be added to a Zigbee group before a group entity is created.
-{% endnote %}
-
 1. Press the **Configure** button on the ZHA integration page,
 2. Choose **Groups** and select **Create Group**,
 3. Set a group name,
 4. Select which devices to include in the group.
+
+{% note %}
+The group should consist of products of the same device type (all lights, all switches, or all fans), and at least two devices must be added to a Zigbee group before a group entity is created.
+{% endnote %}
 
 ### Zigbee binding and unbinding
 
@@ -492,11 +492,11 @@ Not all devices support binding. By default, ZHA binds remotes to the coordinato
 
 ## Zigbee backup and restore in ZHA
 
-The ZHA {% term integration %} includes a Zigbee network backup, restore/recovery, and migrating between Zigbee coordinators. 
+The ZHA {% term integration %} includes functionality for a Zigbee network backup, restore/recovery, and migrating between Zigbee coordinators. This can be helpful if your current radio fails or a new radio adapter type and model comes out that you may want to migrate to.
 
-Backups are taken automatically, but a single backup to a file for easy download can also be manually created from the configuration page under **Network Settings**.
+Backups are taken automatically, and a single backup to a file for easy download can also be manually created from the configuration page under **Network Settings**.
 
-After restoring a Home Assistant backup, you can reconfigure ZHA and migrate to a new Zigbee Coordinator adapter without any loss of your settings or devices that were connected. This is helpful if your current radio fails or a new radio adapter type and model comes out that you may want to migrate to.
+After restoring a Home Assistant backup, you can reconfigure ZHA and migrate to a new Zigbee Coordinator adapter without any loss of your settings or devices that were connected.
 
 The backup and restore feature can be used to migrate between some different radio types if the respective radio library supports it. Currently, ZHA supports migrating the Zigbee network between different Zigbee Coordinator adapters based on chips from Silicon Labs, Texas Instruments, or ConBee/RaspBee if the backup was made from inside ZHA.
 
