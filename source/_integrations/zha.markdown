@@ -415,29 +415,38 @@ In this theoretical example, a CC2652-based Zigbee coordinator has three CC2530 
 
 In practice, you will likely need to add a lot more Zigbee router devices than in this example in order to extend the coverage of the network to reach that many devices.
 
-## Zigbee groups and binding devices
+## Zigbee Groups and Binding devices
 
-ZHA supports Zigbee groups and binding devices to each other. These features can be used separately or combined. For example, binding a remote to a bulb or group has the benefit of faster response time and smoother control, as the remote directly controls the bound devices.
+ZHA supports Zigbee Groups as well as binding devices to each other. For example, binding a remote to a bulb or group has the benefit of faster response time and smoother control as the remote directly controls the bound devices. Groups and bindings can be used independently or together.
 
-### Zigbee group
+### Zigbee Group
 
-A Zigbee group enables the grouping of multiple Zigbee lights, switches, and fans. This allows you to control those devices with only one command/entity.
+A Zigbee Group enables the grouping of multiple Zigbee lights, switches, or fans, allowing you to control those devices with only one command/entity.
 
 {% note %}
-While using a native Zigbee group instead of Home Assistant's [Group](/integrations/group/) integration can improve the visual responsiveness, the broadcast commands issued can flood the Zigbee network if issued repeatedly.
+While using a native Zigbee Group instead of Home Assistant's [Group](/integrations/group/) integration can improve the visual responsiveness, the broadcast commands issued can flood the Zigbee network if issued repeatedly.
 {% endnote %}
 
-To create a Zigbee Group, press the "Configure" button on the ZHA integration config page. At the top, choose "Groups" and select "Create Group". Set a group name and choose which devices to include in the group.
+#### Creating a Zigbee Group
 
-The group should consist of products of the same device type (e.g. all lights, switches, or fans), and at least two devices must be added to a Zigbee group before a group entity is created.
+1. Select the **Configure** button on the ZHA integration page,
+2. Choose **Groups** and select **Create Group**,
+3. Enter a name for the group,
+4. Select which devices to include in the group.
 
-### Zigbee binding and unbinding
+{% note %}
+The group should consist of products of the same device type (all lights, all switches, or all fans).
 
-Binding is an on-device feature for Zigbee devices. It provides a mechanism for attaching an endpoint of one Zigbee device to an endpoint of another Zigbee device or to a Zigbee group.
+At least two devices must be added to a Zigbee Group before a group entity is created.
+{% endnote %}
 
-For example, binding a "target destination" Zigbee device like a remote to a Zigbee light bulb, switch or group of light bulbs allows direct control of the "target" device (light, switch, shade) from the "remote" Zigbee device, bypassing ZHA. This means that the remote can control the light bulb or group even when ZHA is not active.
+### Zigbee Binding and Unbinding
 
-Note that not all devices support binding. By default, ZHA binds remotes to the coordinator, so click events are forwarded to HA. As some remotes can only be bound to a single destination, you might need to unbind the remote from the coordinator before binding it to another device or group.
+Binding is Zigbee device feature providing a mechanism for attaching an endpoint of one Zigbee device to an endpoint of another Zigbee device (or Zigbee Group).
+
+Binding a "target destination" Zigbee device like a remote to a Zigbee light bulb, switch, or group of light bulbs allows direct control of the "target" device (light, switch, shade) from the "remote" Zigbee device, bypassing ZHA. This means that the remote can control the light bulb or group even when ZHA is not active.
+
+Not all devices support binding. ZHA binds remotes to the coordinator by default in order to forward click events to Home Assistant. As some remotes can only be bound to a single destination, you might need to unbind the remote from the coordinator before binding it to another device or group.
 
 ## Zigbee backup and restore in ZHA
 
