@@ -439,25 +439,28 @@ For example, binding a "target destination" Zigbee device like a remote to a Zig
 
 Note that not all devices support binding. By default, ZHA binds remotes to the coordinator, so click events are forwarded to HA. As some remotes can only be bound to a single destination, you might need to unbind the remote from the coordinator before binding it to another device or group.
 
-## Zigbee backup and restore in ZHA
+## Backups and Migration
 
-Zigbee Home Automation (ZHA) {% term integration %} now features Zigbee network backup, restore/recovery, and migrating between Zigbee coordinators. Backups are taken automatically. However, a single backup to a file for easy download can also be manually created from the configuration page under Network Settings.
+The ZHA {% term integration %} performs automatic backups of your Zigbee network allowing you to restore/recover the network from a backup or migrate to a different Zigbee Coordinator (radio adapter).
 
-After restoring a Home Assistant backup, you can re-configure ZHA and migrate to a new Zigbee Coordinator adapter without any loss of your settings or devices that were connected. This is helpful if your current radio fails or a new radio adapter type and model comes out that you may want to migrate to.
+After restoring a Home Assistant backup, you can reconfigure ZHA or migrate to a new Zigbee Coordinator without any loss of your settings or devices that were connected. This can be helpful if your current radio fails or a new radio adapter type/model comes out that you want to migrate to.
 
-Within ZHA it is possible to use this backup and restore feature to migrate between some different radio types, if the respective radio library supports it. Currently, ZHA supports migrating the Zigbee network between different Zigbee Coordinator adapters based on chips from Silicon Labs, Texas Instruments, or ConBee/RaspBee if the backup was made from inside ZHA.
+Manual backups can also be created from the configuration page under **Network Settings**.
 
-## Migrating to a new Zigbee coordinator adapter inside ZHA
+### Migrating to a new Zigbee Coordinator adapter inside ZHA
 
-Follow this guide if you have a Zigbee Home Assistant (ZHA) network running and want to migrate from one Zigbee coordinator radio adapter to another Zigbee coordinator radio adapter.
+ZHA supports migrating the Zigbee network between different Zigbee Coordinators based on chips from Silicon Labs, Texas Instruments, or ConBee/RaspBee if the backup was made from inside ZHA.
 
-### Prerequisites
+To migrate your Zigbee network from one Zigbee Coordinator to another, confirm you meet the following requirements before proceeding with the migration process:
 
-- Your old Zigbee Coordinator radio adapter is used in the ZHA {% term integration %} (not in deCONZ or MQTT).
-- It is of radio type ezsp (Silicon Labs EmberZnet), znp (Texas Instruments Z-Stack ZNP), or deCONZ (ConBee/RaspBee from dresden elektronik).
-  - If your old Zigbee coordinator is a deCONZ (ConBee/RaspBee) radio adapter, make sure it is running [firmware 0x26700700 (from 2021-08-18)](https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Firmware-Changelog) or later.
+- The previous Zigbee Coordinator is used in the ZHA {% term integration %} and _not_ in deCONZ or MQTT.
+- The radio type is one of the following:
+  - ezsp (Silicon Labs EmberZnet)
+  - znp (Texas Instruments Z-Stack ZNP)
+  - deCONZ (ConBee/RaspBee from dresden elektronik)
+    - For deCONZ (ConBee/RaspBee) radio adapters, make sure it is running [firmware 0x26700700 (from 2021-08-18)](https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Firmware-Changelog) or later.
 
-### To migrate to a new Zigbee coordinator radio inside ZHA
+#### Migration process
 
 1. Go to **{% my integrations title="Settings > Devices & services" %}** and select the ZHA {% term integration %}. Then select **Configure**.
 2. Under **Network settings**, select **Migrate radio**.
