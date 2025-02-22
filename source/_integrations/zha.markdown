@@ -498,7 +498,7 @@ To migrate your Zigbee network from one Zigbee Coordinator to another, confirm y
 You will not be able to control your existing Zigbee devices until the new coordinator fully joins the network after the migration. **This can take a few minutes.**
 
 If some existing devices do not resume normal functions after some time, try power-cycling them to attempt rejoining to the network.
-{% endcaution %}
+{% endimportant %}
 
 ## Troubleshooting
 
