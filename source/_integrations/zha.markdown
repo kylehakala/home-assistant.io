@@ -69,7 +69,7 @@ This {% term integration %} currently supports the following device types within
 - [Switch](/integrations/switch/)
 - [Update](/integrations/update/)
 
-In addition, it has support for "Zigbee groups" that enable native on-device grouping of multiple Zigbee lights, switches, and fans that enable controlling all entities for those devices in those groups with one command. At least two entities must be added to a Zigbee group inside the ZHA {% term integration %} before a group entity is created. There is also support for native on-device binding. Refer to the [Zigbee Groups and Binding devices](#zigbee-groups-and-binding-devices) section for more information.
+In addition, it has support for "Zigbee groups" that enable native on-device grouping of multiple Zigbee lights, switches, and fans that enable controlling all entities for those devices in those groups with one command. At least two entities must be added to a Zigbee group inside the ZHA {% term integration %} before a group entity is created. There is also support for native on-device binding. Refer to the [Zigbee groups and binding devices](#zigbee-groups-and-binding-devices) section for more information.
 
 ## Introduction
 
@@ -457,7 +457,7 @@ Prerequisites and steps can vary depending on the device type, manufacturer, and
 {% endnote %}
 
 1. Navigate to the Zigbee device's configuration page,
-2. In the options menu (the "three-dots" icon), select **Manage zigbee device**,
+2. In the options menu (the "three-dots" icon), select **Manage Zigbee device**,
 3. Select the **Bindings** tab in the pop-up dialog,
 4. Choose the device from the dropdown list of _Bindable devices_ (or _Bindable groups_),
 5. Confirm the Bind or Unbind action:
