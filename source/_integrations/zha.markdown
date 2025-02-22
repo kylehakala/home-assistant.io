@@ -439,7 +439,7 @@ For example, binding a "target destination" Zigbee device like a remote to a Zig
 
 Note that not all devices support binding. By default, ZHA binds remotes to the coordinator, so click events are forwarded to HA. As some remotes can only be bound to a single destination, you might need to unbind the remote from the coordinator before binding it to another device or group.
 
-## Backups and Migration
+## Backups and migration
 
 The ZHA {% term integration %} performs automatic backups of your Zigbee network allowing you to restore/recover the network from a backup or migrate to a different Zigbee Coordinator (radio adapter).
 
