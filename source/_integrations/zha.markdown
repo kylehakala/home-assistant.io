@@ -427,7 +427,7 @@ ZHA supports the creation of Zigbee groups (different from Home Assistant's [Gro
 
 ### Groups
 
-A Zigbee groups is a collection of multiple Zigbee lights, switches, or fans, and they allow for controlling a collection of devices with only one command/entity.
+A Zigbee group is a collection of two or more Zigbee lights, switches, or fans. A Zigbee group can then be controlled using only one command/entity.
 
 {% note %}
 While using a native Zigbee group instead of Home Assistant's [Group](/integrations/group/) integration can improve the visual responsiveness, the broadcast commands issued can flood the Zigbee network if issued repeatedly.
@@ -446,13 +446,13 @@ While using a native Zigbee group instead of Home Assistant's [Group](/integrati
 
 Binding a Zigbee device attaches an endpoint from one device to an endpoint of another device (or group).
 
-Commands sent between bound devices bypass ZHA (even when ZHA is not active) and directly control the targeted device. This can allow for faster response times and smoother control.
+Commands sent between bound devices bypass ZHA (even when ZHA is not active) and directly control the targeted device. Binding devices can allow for faster response times and smoother control.
 
-Keep in mind the following:
+Before binding devices, note the following:
 
 - ZHA binds remotes to the Zigbee coordinator by default in order to forward click events to Home Assistant.
-- Some remotes can only be bound to a single destination; you might need to unbind the remote from the coordinator before binding it to another target.
-- Not all devices support binding. Refer to the device manufacturer's documentation to confirm.
+- Some remotes can only be bound to a single target; you might need to unbind the remote from the coordinator before binding it to another target.
+- Not all devices support binding. Refer to the device manufacturer's documentation to confirm features.
 
 #### To manage bindings of a Zigbee device
 
