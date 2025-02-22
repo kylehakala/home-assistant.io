@@ -421,7 +421,7 @@ ZHA supports the creation of Zigbee groups (different from Home Assistant's [Gro
 
 ### Groups
 
-A Zigbee groups is a collection of multiple Zigbee lights, switches, or fans, and they allow for controling a collection of devices with only one command/entity.
+A Zigbee groups is a collection of multiple Zigbee lights, switches, or fans, and they allow for controlling a collection of devices with only one command/entity.
 
 {% note %}
 While using a native Zigbee group instead of Home Assistant's [Group](/integrations/group/) integration can improve the visual responsiveness, the broadcast commands issued can flood the Zigbee network if issued repeatedly.
@@ -461,7 +461,7 @@ Prerequisites and steps can vary depending on the device type, manufacturer, and
 3. Select the **Bindings** tab in the pop-up dialog,
 4. Choose the device from the dropdown list of _Bindable devices_ (or _Bindable groups_),
 5. Confirm the Bind or Unbind action:
-   - To bind devices: select **Bind** (or **Bind group)**, or
+   - To bind devices: select **Bind** (or **Bind group**), or
    - To unbind devices, select **Unbind** (or **Unbind group**).
 
 ## Zigbee backup and restore in ZHA
