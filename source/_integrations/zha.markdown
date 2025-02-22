@@ -462,7 +462,7 @@ To migrate your Zigbee network from one Zigbee Coordinator to another, confirm y
   - deCONZ (ConBee/RaspBee from dresden elektronik)
     - For deCONZ (ConBee/RaspBee) radio adapters, make sure it is running [firmware 0x26700700 (from 2021-08-18)](https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Firmware-Changelog) or later.
 
-#### Migration process
+#### To migrate to a new Zigbee coordinator radio inside ZHA
 
 1. Go to **{% my integrations title="Settings > Devices & services" %}** and select the ZHA {% term integration %}. Then select **Configure**.
 2. Under **Network settings**, select **Migrate radio**.
