@@ -344,11 +344,10 @@ from the same group:
 
 {% note %}
   Currently `qr_code` supports QR Install Codes from:
-
-- Aqara
-- Bosch
-- Consciot
-- Embrighten
+    - Aqara
+    - Bosch
+    - Consciot
+    - Embrighten
 {% endnote %}
 
 ### Action `zha.remove`
