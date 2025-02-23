@@ -108,7 +108,7 @@ Newer coordinators generally support Zigbee 3.0 firmware, but it is up to the ma
 
 ### Other supported but not recommended Zigbee radio adapters or modules
 
-Support for the following hardware is no longer recommended. Specific models and details are noted where available in each section.
+The following hardware is no longer recommended. Specific models and details are noted where available in each section.
 
 {% details "List of hardware that is no longer recommended" %}
 
