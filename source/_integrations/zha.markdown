@@ -89,8 +89,6 @@ Note! Zigbee 3.0 support or not in zigpy, depends primarily on your Zigbee coord
 
 Some other Zigbee coordinator hardware may not support a firmware that is capable of Zigbee 3.0 at all but can still be fully functional and feature-complete for your needs. This is very common as many, if not most, Zigbee devices do not yet Zigbee 3.0. As a general rule, newer Zigbee coordinator hardware generally supports Zigbee 3.0 firmware and it is up to its manufacturer to make such firmware available for them.
 
-### Known working Zigbee radio modules
-
 ### Recommended Zigbee radio adapters and modules
 
 - Silicon Labs EmberZNet based radios using the EZSP protocol (via the [bellows](https://github.com/zigpy/bellows) library for zigpy)
@@ -218,7 +216,7 @@ Some devices can be auto-discovered, which can simplify the ZHA setup process. T
 | [Tube's CC2652P2 PoE-powered Zigbee to Ethernet Serial Coordinator)](https://www.tubeszb.com/)                                              | Zeroconf         | tube_zb_gw_cc2652p2_poe.local. |
 | [Tube's EFR32 Based Zigbee to Ethernet Serial Coordinator)](https://www.tubeszb.com/)                                                       | Zeroconf         | tube_zb_gw_efr32.local.        |
 
-Additional devices in the [Known working Zigbee radio modules](#known-working-zigbee-radio-modules) list may be discoverable, however, only devices that have been confirmed discoverable are listed above.
+Additional devices in the [Compatible hardware](#compatible-hardware) section may be discoverable, however, only devices that have been confirmed discoverable are listed above.
 
 ### OTA updates of Zigbee device firmware
 
@@ -295,7 +293,11 @@ zha:
       channels: [15, 20, 25]  # Channel mask
 ```
 
-Note! The best practice is to not change the Zigbee channel from the ZHA default. Also, the related troubleshooting segments mentioned in the tip above will, among other things, inform that if you have issues with overlapping frequencies between Wi-Fi and Zigbee, then it is usually better to first only try changing and setting a static Wi-Fi channel on your Wi-Fi router or all your Wi-Fi access points (instead of just changing to another Zigbee channel).
+{% note }
+The best practice is to not change the Zigbee channel from the ZHA default.
+{% endnote }
+
+The related troubleshooting segments mentioned above will, among other things, inform that if you have issues with overlapping frequencies between Wi-Fi and Zigbee, then it is usually better to first only try changing and setting a static Wi-Fi channel on your Wi-Fi router or all your Wi-Fi access points (instead of just changing to another Zigbee channel).
 
 MetaGeek Support has a good reference article about channel selection for [Zigbee and WiFi coexistence](https://support.metageek.com/hc/en-us/articles/203845040-ZigBee-and-WiFi-Coexistence).
 
