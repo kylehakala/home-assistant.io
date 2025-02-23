@@ -112,9 +112,9 @@ Newer coordinators generally support Zigbee 3.0 firmware, but it is up to the ma
 
 Support for the following hardware is no longer recommended. Specific models and details are noted where available in each section.
 
-{% details "Silicon Labs EmberZNet (legacy hardware using EZSP via bellows)" %}
+{% details "List of hardware that is no longer recommended" %}
 
-{% icon "mdi:warning" %} Silicon Labs EmberZNet based radios using legacy hardware using the EZSP protocol (via the [bellows](https://github.com/zigpy/bellows) library for zigpy)
+{% icon "mdi:warning" %} **Silicon Labs EmberZNet based radios using legacy hardware using the EZSP protocol (via the [bellows](https://github.com/zigpy/bellows) library for zigpy)**
 
 - [Elelabs Zigbee USB Adapter](https://elelabs.com/products/elelabs-usb-adapter.html)/POPP ZB-Stick
   - It is suggested to [upgrade the EmberZNet NCP application firmware](https://github.com/Elelabs/elelabs-zigbee-ezsp-utility)
@@ -128,11 +128,8 @@ Support for the following hardware is no longer recommended. Specific models and
 - [Bitron Video/Smabit BV AV2010/10 USB-Stick](https://manuals.smabit.eu/len/av2010_10.html) with Silicon Labs Ember 3587
 - Telegesis ETRX357USB/ETRX357USB-LR/ETRX357USB-LRS+8M
   - These first need to be [flashed with other EmberZNet firmware](https://github.com/walthowd/husbzb-firmware)
-{% enddetails %}
 
-{% details "Texas Instruments (legacy hardware using zigpy-znp)" %}
-
-{% icon "mdi:warning" %} Texas Instruments based radios using legacy hardware (via the [zigpy-znp](https://github.com/zigpy/zigpy-znp) library for zigpy)
+{% icon "mdi:warning" %} **Texas Instruments based radios using legacy hardware (via the [zigpy-znp](https://github.com/zigpy/zigpy-znp) library for zigpy)**
 
 - [CC2538 USB stick, module, or dev board hardware flashed with Z-Stack coordinator firmware](https://www.zigbee2mqtt.io/information/supported_adapters)
   - This is no longer recommended as it can only run deprecated (old/end-of-life) firmware.
@@ -140,33 +137,21 @@ Support for the following hardware is no longer recommended. Specific models and
   - This is no longer recommended as it uses deprecated hardware and very old, end-of-life firmware.
   - This will not work properly if the Zigbee network has more than 15-20 devices.
 
-{% enddetails %}
-
-{% details "dresden elektronik (legacy hardware using zigpy-deconz)" %}
-
-{% icon "mdi:warning" %} dresden elektronik deCONZ based Zigbee radios using legacy hardware (via the [zigpy-deconz](https://github.com/zigpy/zigpy-deconz) library for zigpy)
+{% icon "mdi:warning" %} **dresden elektronik deCONZ based Zigbee radios using legacy hardware (via the [zigpy-deconz](https://github.com/zigpy/zigpy-deconz) library for zigpy)**
 
 - [ConBee II (a.k.a. ConBee 2) USB adapter from dresden elektronik](https://phoscon.de/conbee2)
 - [RaspBee II (a.k.a. RaspBee 2) Raspberry Pi Shield from dresden elektronik](https://phoscon.de/raspbee2)
 - [ConBee USB adapter from dresden elektronik](https://phoscon.de/conbee)
 - [RaspBee Raspberry Pi Shield from dresden elektronik](https://phoscon.de/raspbee)
 
-{% enddetails %}
-
-{% details "Digi XBee (using zigpy-xbee)" %}
-
-{% icon "mdi:warning" %} Digi XBee Zigbee based radios (via the [zigpy-xbee](https://github.com/zigpy/zigpy-xbee) library for zigpy)
+{% icon "mdi:warning" %} **Digi XBee Zigbee based radios (via the [zigpy-xbee](https://github.com/zigpy/zigpy-xbee) library for zigpy)**
 
 - [Digi XBee Series 3 (xbee3-24)](https://www.digi.com/products/embedded-systems/digi-xbee/rf-modules/2-4-ghz-rf-modules/xbee3-zigbee-3) and [Digi XBee Series S2C](https://www.digi.com/products/embedded-systems/digi-xbee/rf-modules/2-4-ghz-rf-modules/xbee-zigbee) modules
   - It is suggested to [upgrade XBee Series 3 and S2C to newest firmware using XCTU](https://www.digi.com/resources/documentation/Digidocs/90002002/Default.htm#Tasks/t_load_zb_firmware.htm)
 - [Digi XBee Series 2 (S2)](https://www.digi.com/support/productdetail?pid=3430) modules
   - These first need to be [flashed with Zigbee Coordinator API firmware](https://www.digi.com/support/productdetail?pid=3430)
 
-{% enddetails %}
-
-{% details "ZiGate (using zigpy-zigate with firmware 3.1d+)" %}
-
-{% icon "mdi:warning" %} ZiGate based radios (via the [zigpy-zigate](https://github.com/zigpy/zigpy-zigate) library for zigpy and require firmware 3.1d or later)
+{% icon "mdi:warning" %} **ZiGate based radios (via the [zigpy-zigate](https://github.com/zigpy/zigpy-zigate) library for zigpy and require firmware 3.1d or later)**
 
 - [ZiGate USB](https://zigate.fr/produit/zigate-usb/)
 - [ZiGate USB-DIN](https://zigate.fr/produit/zigatev2-usb-din/)
