@@ -24,7 +24,7 @@ ha_zeroconf: true
 The **Roomba** {% term integrations %} allows you to control your [iRobot Roomba](https://www.irobot.com/roomba) vacuum or [iRobot Braava](https://www.irobot.com/braava) m-series mop.
 
 <p class='img'>
-<img src='/images/screenshots/more-info-dialog-roomba.png' />
+<img src='/images/screenshots/more-info-dialog-roomba.png' alt="The More Info dialog from Home Assistant is shown with various buttons to control the vacuum, status indicators for conveying state, and timeline of the previous statuses for the robot."/>
 </p>
 
 {% note %}
@@ -75,7 +75,9 @@ The command to retrieve the credentials does not need any additional software to
 
 #### Retrieving credentials from the cloud with dorita980
 
-The underlying Python library is currently unable to retrieve the credentials from some newer models (for example, the J7). See [this issue](https://github.com/pschmitt/roombapy/issues/97) for details. Luckily, the password can be retrieved from the cloud using a tool provided by the [dorita980](https://github.com/koalazak/dorita980) library. Follow [these instructions](https://github.com/koalazak/dorita980#how-to-get-your-usernameblid-and-password) to do this, you should receive output of the form:
+The underlying Python library is currently unable to retrieve the credentials from some newer models (for example, the J7). See [this issue](https://github.com/pschmitt/roombapy/issues/97) for details.
+
+Luckily, the password can be retrieved from the cloud using a tool provided by the [dorita980](https://github.com/koalazak/dorita980) library. Follow [these instructions](https://github.com/koalazak/dorita980#how-to-get-your-usernameblid-and-password) to do this, you should receive output of the form:
 
 ```shell
 Found 1 robot(s)!
@@ -101,14 +103,15 @@ Automations may start to fail if your map is updated in the iRobot app. When the
 Example parameters:
 
 ```yaml
-pmap_id: XXXXXXXXXXXXXXXX--XXXX
+pmap_id: XXXXXXXXXXXXXXXX--XXXX  # Map ID associated with a specific robot.
 regions:
-  - region_id: "X"
-    type: zid # zid is a Zone ID
-  - region_id: "X"
-    type: rid # rid is a Room ID
-user_pmapv_id: YYMMDDTHHMMSS # Changes when a map is updated
+  - region_id: "X"  # ID of the target Zone or Room.
+    type: zid  # Either `zid` (Zone ID) or `rid` (Room ID).
+  - region_id: "Y" 
+    type: rid  
+user_pmapv_id: YYMMDDTHHMMSS # Changes when a map is updated.
 ```
+
 *When listing multiple `regions`, each region will be cleaned in the order in which it is listed.*
 
 ### Retrieving Parameters
@@ -120,7 +123,7 @@ To find your `pmap_id`, the `user_pmapv_id`, and the `region_id` and `type` asso
 3. Go to Home Assistant **Settings** > **System** > **Logs**.
 4. Select **Show raw logs** from the three-dots menu.
 5. In the search box on the Logs page, search for `lastCommand` and locate the most recent entry containing the "start" command.
-6. Make note of the values for the following attributes: 
+6. Make note of the values for the following attributes:
     - `pmap_id`
     - `user_pmapv_id`
     - Within the list of `regions`, record each of the values:
