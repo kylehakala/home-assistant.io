@@ -134,14 +134,14 @@ Some other Zigbee coordinator hardware may not support a firmware that is capabl
 
 {% caution %}
 
-- It is **not recommended** to run a Zigbee Coordinator via **Serial-Proxy-Server** _(also called Serial-to-IP bridge or Ser2Net remote adapter)_ over:
+- It is **not recommended** to run a coordinator via **Serial-Proxy-Server** _(also called Serial-to-IP bridge or Ser2Net remote adapter)_ over:
   
   - **Wi-Fi**,
   - **WAN**, or
   - **VPN**
 
-- A Zigbee Coordinator requires a stable, local connection to its serial port interface without drops in communication with the Zigbee gateway application running on the host computer.
-- Serial protocols used by the Zigbee Coordinator do not have enough robustness, resilience, or fault tolerance to handle packet loss and latency delays that can occur over unstable connections.
+- The coordinator requires a stable, local connection to its serial port interface without drops in communication with the Zigbee gateway application running on the host computer.
+- Serial protocols used by the coordinator do not have enough robustness, resilience, or fault tolerance to handle packet loss and latency delays that can occur over unstable connections.
 {% endcaution %}
 
 ## Configuration requirements
