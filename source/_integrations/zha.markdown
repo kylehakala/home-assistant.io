@@ -132,22 +132,21 @@ Some other Zigbee coordinator hardware may not support a firmware that is capabl
   - [ZiGate-Ethernet (Ethernet gateway board for PiZiGate)](https://zigate.fr/produit/zigate-ethernet/)
   - [ZiGate + WiFi Pack](https://zigate.fr/produit/zigatev2-pack-wifi/)
 
-## Configuration requirements
-
-Be sure to connect a compatible radio module and restart Home Assistant before proceeding with configuration.
-
 {% caution %}
 
-- It is **not recommended** to run a Zigbee Coordinator over the following connections:
+- It is **not recommended** to run a Zigbee Coordinator via **Serial-Proxy-Server** _(also called Serial-to-IP bridge or Ser2Net remote adapter)_ over:
   
-  - **Wi-Fi**
-  - **WAN**
+  - **Wi-Fi**,
+  - **WAN**, or
   - **VPN**
-  - **Serial-Proxy-Server** _(also known as Serial-to-IP bridge or Ser2Net remote adapter)_
 
 - A Zigbee Coordinator requires a stable, local connection to its serial port interface without drops in communication with the Zigbee gateway application running on the host computer.
 - Serial protocols used by the Zigbee Coordinator do not have enough robustness, resilience, or fault tolerance to handle packet loss and latency delays that can occur over unstable connections.
 {% endcaution %}
+
+## Configuration requirements
+
+Be sure to connect a compatible radio module and restart Home Assistant before proceeding with configuration.
 
 {% include integrations/config_flow.md %}
 
