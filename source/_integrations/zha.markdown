@@ -117,14 +117,14 @@ Support for the following hardware is no longer recommended. Specific models and
 {% icon "mdi:warning" %} Silicon Labs EmberZNet based radios using legacy hardware using the EZSP protocol (via the [bellows](https://github.com/zigpy/bellows) library for zigpy)
 
 - [Elelabs Zigbee USB Adapter](https://elelabs.com/products/elelabs-usb-adapter.html)/POPP ZB-Stick
-  - It is recommended to [upgrade the EmberZNet NCP application firmware](https://github.com/Elelabs/elelabs-zigbee-ezsp-utility)
+  - It is suggested to [upgrade the EmberZNet NCP application firmware](https://github.com/Elelabs/elelabs-zigbee-ezsp-utility)
 - [Elelabs Zigbee Raspberry Pi Shield](https://elelabs.com/products/elelabs-zigbee-shield.html)
-  - It is recommended to [upgrade the EmberZNet NCP application firmware](https://github.com/Elelabs/elelabs-zigbee-ezsp-utility)
+  - It is suggested to [upgrade the EmberZNet NCP application firmware](https://github.com/Elelabs/elelabs-zigbee-ezsp-utility)
 - [ITead Sonoff ZBBridge](https://itead.cc/product/sonoff-zbbridge/)
   - Note: [WiFi-based bridges are not recommended for ZHA with EZSP radios](https://github.com/home-assistant/home-assistant.io/issues/17170).
   - These first need to be flashed with [Tasmota firmware and Silabs EmberZNet NCP EZSP UART Host firmware to use as Serial-to-IP adapter](https://www.digiblur.com/2020/07/how-to-use-sonoff-zigbee-bridge-with.html)
 - [Nortek GoControl QuickStick Combo Model HUSBZB-1 (Z-Wave & Zigbee Ember 3581 USB Adapter)](https://www.nortekcontrol.com/products/2gig/husbzb-1-gocontrol-quickstick-combo/)
-  - It is recommended to [upgrade the EmberZNet NCP application firmware](https://github.com/walthowd/husbzb-firmware)
+  - It is suggested to [upgrade the EmberZNet NCP application firmware](https://github.com/walthowd/husbzb-firmware)
 - [Bitron Video/Smabit BV AV2010/10 USB-Stick](https://manuals.smabit.eu/len/av2010_10.html) with Silicon Labs Ember 3587
 - Telegesis ETRX357USB/ETRX357USB-LR/ETRX357USB-LRS+8M
   - These first need to be [flashed with other EmberZNet firmware](https://github.com/walthowd/husbzb-firmware)
@@ -158,7 +158,7 @@ Support for the following hardware is no longer recommended. Specific models and
 {% icon "mdi:warning" %} Digi XBee Zigbee based radios (via the [zigpy-xbee](https://github.com/zigpy/zigpy-xbee) library for zigpy)
 
 - [Digi XBee Series 3 (xbee3-24)](https://www.digi.com/products/embedded-systems/digi-xbee/rf-modules/2-4-ghz-rf-modules/xbee3-zigbee-3) and [Digi XBee Series S2C](https://www.digi.com/products/embedded-systems/digi-xbee/rf-modules/2-4-ghz-rf-modules/xbee-zigbee) modules
-  - It is recommend to [upgrade XBee Series 3 and S2C to newest firmware using XCTU](https://www.digi.com/resources/documentation/Digidocs/90002002/Default.htm#Tasks/t_load_zb_firmware.htm)
+  - It is suggested to [upgrade XBee Series 3 and S2C to newest firmware using XCTU](https://www.digi.com/resources/documentation/Digidocs/90002002/Default.htm#Tasks/t_load_zb_firmware.htm)
 - [Digi XBee Series 2 (S2)](https://www.digi.com/support/productdetail?pid=3430) modules
   - These first need to be [flashed with Zigbee Coordinator API firmware](https://www.digi.com/support/productdetail?pid=3430)
 
