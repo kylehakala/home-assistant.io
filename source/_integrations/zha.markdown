@@ -680,36 +680,53 @@ If you experience problems pairing a device, verify that you follow best practic
 
 ### Zigbee interference avoidance and network range/coverage optimization
 
-Sources of interference for radios can lead to transmission/reception loss or connection problems and show symptoms such as errors/failures when sending and receiving Zigbee messages/signals that can cause significant degradation in performance or even prevent devices from communicating at all. Below are some basic but essential tips for getting a good setup starting point to achieve better signal quality, improved coverage, and extended range.
+Improve signal quality, coverage, and extended range with some of the tips outlined below.
 
-Following all these optimization tips below should significantly improve the reception of your Zigbee radio adapter. The below insights describe working around the well-known limitations of low-power/low-bandwidth 2.4 GHz digital radios. It can that way resolve or avoid many known issues caused by interference or poor placement of your Zigbee radio adapter or devices.
+{% important %}
+Both **external radio interference** and **poor placement of your coordinator** can lead to Zigbee performance issues and even devices outright failing to communicate.
+{% endimportant %}
 
-All electric devices/appliances, especially computers and computer peripherals, generate [EMI/EMF/RMI (electromagnetic fields that cause electromagnetic interference (often called radio-frequency interference, also commonly called signal noise in layman's terms)](https://en.wikipedia.org/wiki/Electromagnetic_interference), which can interfere with signals transmissions on the 2.4 GHz radio band frequency, and in practice partially degrade or even fully jam the wireless communication messages between your Zigbee adapter/devices.
+All electronic devices (including appliances, computers, and peripherals) can cause [radio frequency interference](https://en.wikipedia.org/wiki/Electromagnetic_interference) (RFI) with other electronic devices. RFI disruptions on Zigbee's radio band frequency (2.4 GHz) can degrade and even fully prevent or "jam" wireless communications between your Zigbee adapter/devices.
 
-For example, interference from USB 3.x ports, unshielded USB 3.x devices, and non-shielded USB 3.x peripheral cables are especially infamously known to affect 2.4 GHz radio reception for low-power/low-bandwidth devices. Therefore you should always place your Zigbee adapter far away as possible from any potential sources of EMI/EMI/RMI, preferably by using an adequately long shielded USB extension cable connected to a USB 2.0 port.
+**Always place your Zigbee adapter as far away as possible from any potential sources of RFI.**
 
-Zigbee also uses [mesh networking topology](https://en.wikipedia.org/wiki/Mesh_networking), which means that most mains-powered devices are a "Zigbee Router" that can act as a signal repeater and range extended by transmitting data over long distances by passing data messages through the Zigbee network mesh of intermediate devices to reach more distant Zigbee devices. Thus to have a healthy Zigbee network, you need many Zigbee Router devices relatively close to each other in order to achieve good coverage and range.
+- Use an adequately long, shielded USB extension cable connected to a USB **2.0** port.
+- Interference from USB 3.x ports, unshielded USB 3.x devices, and non-shielded USB 3.x peripheral cables are notoriously known to impact reception for low-power/bandwidth 2.4 GHz radio devices.
+
+**A healthy Zigbee network should have many Zigbee Router devices to achieve good coverage and range.**
+
+- Zigbee's [mesh networking](https://en.wikipedia.org/wiki/Mesh_networking) means that most mains-powered devices are a "Zigbee Router" that act as "signal repeaters" and "range extenders",
+- Each device should be relatively close to other devices,
+- Routers convey messages over long distances by passing data through neighboring devices to reach more distant Zigbee devices.
 
 #### Actions to optimize Zigbee Coordinator radio hardware
 
-Common root causes of unreliable performance are often seen with outdated Zigbee Coordinator radio adapter hardware, limited by obsolete chips, bad antenna designs, or old/buggy firmware. You can improve most Zigbee setups by using a good Zigbee Coordinator radio adapter and maintaining it.
+{% note %}
+Most Zigbee networks can be improved by using—_and maintaining_—a good Zigbee Coordinator radio adapter.
+{% endnote %}
 
-- Buy and use a supported Zigbee Coordinator USB adapter based on newer/modern chip hardware.
+Unreliable performance is often seen with outdated Zigbee Coordinator radio adapter hardware which can be limited by obsolete chips, bad antenna designs, or old/buggy firmware.
+
+{% details "Additional hardware tips:" %}
+
+- Use a supported Zigbee Coordinator USB adapter based on newer/modern chip hardware.
   - Consider a Zigbee Coordinator USB adapter with an external antenna for more flexibility.
 
 - Update to a later version of Zigbee Coordinator firmware on the existing radio adapter.
-  - Most manufacturers usually provide straightforward guides for updating the firmware.
+  - Manufacturers usually provide straightforward guides to update firmware.
 
-- Try different physical placement and orientations of the Zigbee Coordinator and its antenna.
+- Try different physical placement and orientations of the coordinator (and its antenna if movable).
   - Optimal placement of the Zigbee adapter is close to the middle of the house as possible.
   - Try placing Zigbee Coordinator at some distance away from walls, ceilings, and floors.
   - Try different orientations of the Zigbee Coordinator adapter or its antenna.
 
-While using an older Zigbee Coordinator radio adapter hardware might work, using obsolete hardware and/or old firmware can prevent reliable operation. It is also generally a good idea to upgrade Zigbee Coordinator firmware before troubleshooting any further if and when run into problems with devices.
+{% enddetails %}
 
-#### Actions to avoid or workaround EMI/EMF/RMI interference
+While using an older Zigbee Coordinator radio adapter hardware might work in practice, using obsolete hardware and/or old firmware can prevent reliable operation.
 
-Since all Zigbee Coordinator radio adapters are very sensitive/susceptible to all types of EMI/EMF/RMI you should always try to optimize the placement of the Zigbee Coordinator and avoid known sources of interference.
+#### Actions to avoid radio interference
+
+Zigbee Coordinator radio adapters are very sensitive/susceptible to all types of EMI/EMF/RMI you should always try to optimize the placement of the Zigbee Coordinator and avoid known sources of interference.
 
 - Use a long USB extension cable and place Zigbee Coordinator away from interference and obstacles.
   - Ensure the USB extension cable is adequately shielded (thicker cables usually have better shielding).
